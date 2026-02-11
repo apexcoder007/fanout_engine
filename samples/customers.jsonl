@@ -1,0 +1,5 @@
+{"id":1,"name":"Alice","country":"US","active":true,"balance":120.55}
+{"id":2,"name":"Bob","country":"CA","active":false,"balance":95.0}
+{"id":3,"name":"Carla","country":"DE","active":true,"balance":220.4}
+{"id":4,"name":"Diego","country":"BR","active":true,"balance":15.75}
+{"id":5,"name":"Eva","country":"FR","active":false,"balance":0.0}

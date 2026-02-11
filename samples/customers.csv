@@ -1,0 +1,11 @@
+id,name,country,active,balance
+1,Alice,US,true,120.55
+2,Bob,CA,false,95.00
+3,Carla,DE,true,220.40
+4,Diego,BR,true,15.75
+5,Eva,FR,false,0.00
+6,Felix,IN,true,998.10
+7,Grace,JP,true,450.35
+8,Hector,MX,false,88.42
+9,Iris,GB,true,1240.00
+10,Jon,US,true,315.67

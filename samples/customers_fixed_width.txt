@@ -1,0 +1,5 @@
+000001Alice               US        true 
+000002Bob                 CA        false
+000003Carla               DE        true 
+000004Diego               BR        true 
+000005Eva                 FR        false
