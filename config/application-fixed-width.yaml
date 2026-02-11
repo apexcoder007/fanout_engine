@@ -1,0 +1,52 @@
+input:
+  type: FIXED_WIDTH
+  path: samples/customers_fixed_width.txt
+  fixedWidthFields:
+    - name: id
+      start: 0
+      end: 6
+    - name: name
+      start: 6
+      end: 26
+    - name: country
+      start: 26
+      end: 36
+    - name: active
+      start: 36
+      end: 41
+
+engine:
+  useVirtualThreads: true
+  defaultWorkersPerSink: 4
+  queueCapacity: 8000
+  maxRetries: 3
+  retryBackoffMillis: 25
+  deadLetterPath: build/dlq/dead-letter-fixed-width.jsonl
+
+observability:
+  statusIntervalSeconds: 5
+
+sinks:
+  - name: rest-api-sink
+    type: REST_API
+    endpoint: https://mock.rest.internal/v1/records
+    rateLimitPerSecond: 50
+    workers: 4
+
+  - name: grpc-sink
+    type: GRPC
+    endpoint: dns:///mock.grpc.internal:8443
+    rateLimitPerSecond: 200
+    workers: 4
+
+  - name: mq-sink
+    type: MESSAGE_QUEUE
+    endpoint: kafka://mock.kafka.internal/topic/customer-events
+    rateLimitPerSecond: 500
+    workers: 4
+
+  - name: wide-column-sink
+    type: WIDE_COLUMN_DB
+    endpoint: cassandra://mock.cassandra.internal:9042/customer_by_id
+    rateLimitPerSecond: 1000
+    workers: 4

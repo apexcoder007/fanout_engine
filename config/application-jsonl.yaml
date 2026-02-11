@@ -1,0 +1,43 @@
+input:
+  type: JSONL
+  path: samples/customers.jsonl
+
+engine:
+  useVirtualThreads: true
+  defaultWorkersPerSink: 4
+  queueCapacity: 10000
+  maxRetries: 3
+  retryBackoffMillis: 25
+  deadLetterPath: build/dlq/dead-letter-jsonl.jsonl
+
+observability:
+  statusIntervalSeconds: 5
+
+sinks:
+  - name: rest-api-sink
+    type: REST_API
+    endpoint: https://mock.rest.internal/v1/records
+    rateLimitPerSecond: 50
+    workers: 4
+    failureRate: 0.01
+
+  - name: grpc-sink
+    type: GRPC
+    endpoint: dns:///mock.grpc.internal:8443
+    rateLimitPerSecond: 200
+    workers: 4
+    failureRate: 0.01
+
+  - name: mq-sink
+    type: MESSAGE_QUEUE
+    endpoint: kafka://mock.kafka.internal/topic/customer-events
+    rateLimitPerSecond: 500
+    workers: 4
+    failureRate: 0.01
+
+  - name: wide-column-sink
+    type: WIDE_COLUMN_DB
+    endpoint: cassandra://mock.cassandra.internal:9042/customer_by_id
+    rateLimitPerSecond: 1000
+    workers: 4
+    failureRate: 0.01

@@ -1,0 +1,60 @@
+input:
+  type: CSV
+  path: samples/customers.csv
+  delimiter: ","
+  hasHeader: true
+
+engine:
+  useVirtualThreads: true
+  defaultWorkersPerSink: 4
+  queueCapacity: 10000
+  maxRetries: 3
+  retryBackoffMillis: 25
+  shutdownTimeoutSeconds: 30
+  deadLetterPath: build/dlq/dead-letter.jsonl
+
+observability:
+  statusIntervalSeconds: 5
+
+sinks:
+  - name: rest-api-sink
+    type: REST_API
+    endpoint: https://mock.rest.internal/v1/records
+    rateLimitPerSecond: 50
+    workers: 6
+    queueCapacity: 3000
+    minLatencyMs: 10
+    maxLatencyMs: 60
+    failureRate: 0.03
+
+  - name: grpc-sink
+    type: GRPC
+    endpoint: dns:///mock.grpc.internal:8443
+    rateLimitPerSecond: 200
+    workers: 6
+    queueCapacity: 3000
+    minLatencyMs: 5
+    maxLatencyMs: 40
+    failureRate: 0.02
+    options:
+      mode: unary
+
+  - name: mq-sink
+    type: MESSAGE_QUEUE
+    endpoint: kafka://mock.kafka.internal/topic/customer-events
+    rateLimitPerSecond: 500
+    workers: 4
+    queueCapacity: 5000
+    minLatencyMs: 2
+    maxLatencyMs: 20
+    failureRate: 0.01
+
+  - name: wide-column-sink
+    type: WIDE_COLUMN_DB
+    endpoint: cassandra://mock.cassandra.internal:9042/customer_by_id
+    rateLimitPerSecond: 1000
+    workers: 8
+    queueCapacity: 6000
+    minLatencyMs: 1
+    maxLatencyMs: 15
+    failureRate: 0.01
