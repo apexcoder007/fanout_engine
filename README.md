@@ -90,23 +90,23 @@ The implementation is mock-infrastructure based (as required), so it simulates:
 5. End-of-run accounting validates zero-loss requirement.
 
 For a visual view, see:
-- `/Users/apexcoder007/fanout_engine_project/docs/architecture.md`
+- `<project-root>/docs/architecture.md`
 
 ## 4. Repository Layout
 
-- `/Users/apexcoder007/fanout_engine_project/src/main/java`
+- `<project-root>/src/main/java`
   - application source
-- `/Users/apexcoder007/fanout_engine_project/src/test/java`
+- `<project-root>/src/test/java`
   - unit and integration tests
-- `/Users/apexcoder007/fanout_engine_project/config`
+- `<project-root>/config`
   - runnable config samples (CSV/JSONL/fixed-width)
-- `/Users/apexcoder007/fanout_engine_project/samples`
+- `<project-root>/samples`
   - sample input files
-- `/Users/apexcoder007/fanout_engine_project/docs`
+- `<project-root>/docs`
   - architecture notes
-- `/Users/apexcoder007/fanout_engine_project/scripts`
+- `<project-root>/scripts`
   - automation scripts for repair and rigorous validation
-- `/Users/apexcoder007/fanout_engine_project/pom.xml`
+- `<project-root>/pom.xml`
   - Maven build file
 
 ## 5. Prerequisites
@@ -126,7 +126,7 @@ mvn -version
 ### Build
 
 ```bash
-cd /Users/apexcoder007/fanout_engine_project
+cd /path/to/fanout_engine_project
 mvn -s .mvn/settings.xml clean package
 ```
 
@@ -159,7 +159,7 @@ mvn -s .mvn/settings.xml clean test
 Use the comprehensive script:
 
 ```bash
-cd /Users/apexcoder007/fanout_engine_project
+cd /path/to/fanout_engine_project
 ./scripts/test-rigorous.sh
 ```
 
@@ -172,11 +172,11 @@ It performs:
 ## 8. Configuration Reference
 
 Main sample config:
-- `/Users/apexcoder007/fanout_engine_project/config/application.yaml`
+- `<project-root>/config/application.yaml`
 
 Additional samples:
-- `/Users/apexcoder007/fanout_engine_project/config/application-jsonl.yaml`
-- `/Users/apexcoder007/fanout_engine_project/config/application-fixed-width.yaml`
+- `<project-root>/config/application-jsonl.yaml`
+- `<project-root>/config/application-fixed-width.yaml`
 
 Key fields:
 
@@ -210,9 +210,9 @@ Key fields:
 
 ## 9. Sample Inputs Included
 
-- `/Users/apexcoder007/fanout_engine_project/samples/customers.csv`
-- `/Users/apexcoder007/fanout_engine_project/samples/customers.jsonl`
-- `/Users/apexcoder007/fanout_engine_project/samples/customers_fixed_width.txt`
+- `<project-root>/samples/customers.csv`
+- `<project-root>/samples/customers.jsonl`
+- `<project-root>/samples/customers_fixed_width.txt`
 
 ## 10. Resilience and Backpressure Details
 
@@ -251,14 +251,14 @@ Current suite covers:
 ### Maven resolution/network issues
 
 ```bash
-cd /Users/apexcoder007/fanout_engine_project
+cd /path/to/fanout_engine_project
 ./scripts/repair-maven-resolution.sh
 ```
 
 Project-local Maven config files:
-- `/Users/apexcoder007/fanout_engine_project/.mvn/settings.xml`
-- `/Users/apexcoder007/fanout_engine_project/.mvn/maven.config`
-- `/Users/apexcoder007/fanout_engine_project/.mvn/jvm.config`
+- `<project-root>/.mvn/settings.xml`
+- `<project-root>/.mvn/maven.config`
+- `<project-root>/.mvn/jvm.config`
 
 ### If `rg` is missing
 
