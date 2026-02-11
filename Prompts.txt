@@ -1,0 +1,29 @@
+Prompts Used During This Project
+================================
+
+The following prompts were used across implementation, debugging, hardening, and verification.
+
+1. go through this pdf in detail, and implement each and every feature correctly meeting all the functional and non functional requirements
+2. should i install maven or maven daemon
+3. how do i install maven?
+4. i am getting this error (Maven plugin resolution / No route to host)
+5. the issue is not resovled, fix it properly
+6. now i'm getting these errors, fix these
+7. i am getting these errors after running "mvn -s .mvn/settings.xml test", fix these errors properly
+8. now give the commands to run this project
+9. java -jar target/high-throughput-fanout-engine-1.0.0.jar config/application.yaml (NoClassDefFoundError), how do i fix this issue?
+10. do i need to delete any files that could have been created while running previous commands?
+11. why do i get this error on running java -jar target/high-throughput-fanout-engine-1.0.0.jar config/application.yaml (SLF4J / Unsafe warnings)
+12. The system must process files up to 100GB. You must not load the entire file into memory. does the code you provide handle this?
+13. I can patch pom.xml now to add slf4j-simple so the SLF4J warning disappears. yea do it
+14. how do i run this in java21
+15. i got these warnings after running "mvn -s .mvn/settings.xml clean package" command, how do i fix these warnings?
+16. i want to test this application extensively and rigorously with all the edge cases covered
+17. ok give me all the commands to run this project and all the test cases
+18. i got this error after running "./scripts/test-rigorous.sh" ... rg: command not found
+19. ok now update the readme with all the final changes you've made and make it as detailed as possible, also move the prompts section out of the readme and create a Prompts.txt in the root directory containing all the prompts
+
+Additional internal implementation prompts used during development:
+
+20. Extract all requirements from Assignment_2___High-Throughput_Fan-Out_Engine.docx.pdf and implement complete Java project coverage including ingestion, transformations, sinks, throttling, retries, DLQ, observability, tests, and docs.
+21. Expand test coverage to include edge cases for config validation, ingestion parsing, throttling behavior, retry/DLQ flow, metrics integrity, and constrained-heap streaming smoke validation.
